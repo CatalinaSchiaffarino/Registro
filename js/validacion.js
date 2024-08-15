@@ -7,26 +7,11 @@ document.getElementById("regBtn").addEventListener("click", function() {
     const password2 = document.getElementById("password2").value;
     const terminos = document.getElementById("terminos").checked;
 
-    // Validar que ningún campo esté vacío
-    if (!nombre || !apellido || !email || !password1 || !password2 || !terminos) {
+    if (nombre && apellido && email && password1.length >= 6 && password1 === password2 && terminos) {
+        showAlertSuccess();
+    } else {
         showAlertError();
-        return;
     }
-
-    // Validar que la contraseña tenga al menos 6 caracteres
-    if (password1.length < 6) {
-        showAlertError();
-        return;
-    }
-
-    // Validar que las contraseñas coincidan
-    if (password1 !== password2) {
-        showAlertError();
-        return;
-    }
-
-    // Si todas las validaciones pasan, mostrar alerta de éxito
-    showAlertSuccess();
 });
 
 function showAlertSuccess() {
